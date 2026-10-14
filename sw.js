@@ -1,0 +1,38 @@
+/* KTrans mobile prototype — service worker.
+   Caches the app so it opens offline after the first visit.
+   To publish an update: change VERSION below, then upload the files again. */
+const VERSION = 'ktrans-proto-v1';
+const CORE = [
+  "./",
+  "index.html",
+  "manifest.json",
+  "icons/icon-192.png",
+  "icons/icon-512.png",
+  "icons/maskable-512.png",
+  "icons/apple-touch-icon.png",
+  "icons/favicon-48.png",
+  "fonts/barlow-latin-400-normal.woff2",
+  "fonts/barlow-latin-500-normal.woff2",
+  "fonts/barlow-latin-600-normal.woff2",
+  "fonts/barlow-latin-700-normal.woff2",
+  "fonts/barlow-semi-condensed-latin-500-normal.woff2",
+  "fonts/barlow-semi-condensed-latin-600-normal.woff2",
+  "fonts/barlow-semi-condensed-latin-700-normal.woff2"
+];
+
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+});
+self.addEventListener('fetch', e => {
+  const r = e.request;
+  if (r.method !== 'GET' || new URL(r.url).origin !== location.origin) return;
+  if (r.mode === 'navigate') {
+    // Page loads: try the network first so updates arrive, fall back to the saved copy offline.
+    e.respondWith(fetch(r).then(res => { const copy = res.clone(); caches.open(VERSION).then(c => c.put('index.html', copy)); return res; }).catch(() => caches.match('index.html')));
+    return;
+  }
+  e.respondWith(caches.match(r).then(hit => hit || fetch(r).then(res => { const copy = res.clone(); caches.open(VERSION).then(c => c.put(r, copy)); return res; })));
+});
