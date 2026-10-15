@@ -1,4 +1,4 @@
-# KTrans mobile workflow prototype: installable web app
+# MiracleTek mobile workflow prototype: installable web app
 
 This folder is a complete, self-contained copy of the prototype. It does not use Claude or any other online service. Once the files are on a web address, anyone can open it and install it on an iPhone or Android phone like an app.
 
@@ -11,8 +11,8 @@ It uses sample data only. Nothing is stored or sent anywhere, and it resets each
 | `index.html` | The app |
 | `manifest.json` | Tells phones the name, icon and full-screen behaviour |
 | `sw.js` | Saves the app on the phone so it opens offline after the first visit |
-| `icons/` | App icons (KTrans logo) |
-| `fonts/` | Barlow fonts, bundled so nothing loads from the internet (licence included) |
+| `icons/` | App icons (MiracleTek logo) |
+| `fonts/` | Manrope and Barlow Semi Condensed fonts, bundled so nothing loads from the internet (licences included) |
 
 Keep all of these together. The files must sit at the top level of the web address, with `index.html` as the home page.
 
@@ -54,13 +54,13 @@ Safari is needed on iPhone. The browsers inside Outlook, Teams and Mail do not o
 ## Updating it later
 
 1. Change the files.
-2. Open `sw.js` and change `VERSION` (for example from `ktrans-proto-v1` to `ktrans-proto-v2`).
+2. Open `sw.js` and change `VERSION` (for example from `miracletek-proto-v2` to `miracletek-proto-v3`).
 3. Upload the files again over the old ones.
 
 People get the new version the next time they open the app while online.
 
 ## Notes
 
-- The Barlow fonts are licensed under the SIL Open Font License (see `fonts/LICENSE-Barlow-OFL.txt`).
-- The KTrans and MiracleTek logos are used from the supplied branding deck. Confirm you are happy for them to appear in a shared copy.
+- The Manrope and Barlow fonts are licensed under the SIL Open Font License (see the licence files in `fonts/`).
+- The MiracleTek logo is the file you supplied, and the colour theme (red and charcoal) is taken from it.
 - This is a prototype for discussion, not a certified or production system.

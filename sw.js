@@ -1,7 +1,7 @@
-/* KTrans mobile prototype — service worker.
+/* MiracleTek mobile prototype — service worker.
    Caches the app so it opens offline after the first visit.
    To publish an update: change VERSION below, then upload the files again. */
-const VERSION = 'ktrans-proto-v1';
+const VERSION = 'miracletek-proto-v2';
 const CORE = [
   "./",
   "index.html",
@@ -11,13 +11,13 @@ const CORE = [
   "icons/maskable-512.png",
   "icons/apple-touch-icon.png",
   "icons/favicon-48.png",
-  "fonts/barlow-latin-400-normal.woff2",
-  "fonts/barlow-latin-500-normal.woff2",
-  "fonts/barlow-latin-600-normal.woff2",
-  "fonts/barlow-latin-700-normal.woff2",
-  "fonts/barlow-semi-condensed-latin-500-normal.woff2",
   "fonts/barlow-semi-condensed-latin-600-normal.woff2",
-  "fonts/barlow-semi-condensed-latin-700-normal.woff2"
+  "fonts/barlow-semi-condensed-latin-700-normal.woff2",
+  "fonts/manrope-latin-400-normal.woff2",
+  "fonts/manrope-latin-500-normal.woff2",
+  "fonts/manrope-latin-600-normal.woff2",
+  "fonts/manrope-latin-700-normal.woff2",
+  "fonts/manrope-latin-800-normal.woff2"
 ];
 
 self.addEventListener('install', e => {

@@ -1,12 +1,12 @@
 {
-  "name": "KTrans Operations — MiracleTek prototype",
-  "short_name": "KTrans Ops",
-  "description": "Interactive mobile workflow prototype for KTrans. Fictional demonstration data.",
+  "name": "MiracleTek Mobile Workflow Platform",
+  "short_name": "MiracleTek",
+  "description": "Interactive mobile workflow prototype from MiracleTek. Fictional demonstration data.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#3F4042",
+  "theme_color": "#4B4B4D",
   "lang": "en-AU",
   "icons": [
     {
